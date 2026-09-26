@@ -1,0 +1,15 @@
+{
+  "name": "notegraph-pwa",
+  "version": "1.0.0",
+  "description": "PWA locale-first pour gerer des notes Markdown et visualiser leurs connexions en graphe 2D interactif.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

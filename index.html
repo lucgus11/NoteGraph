@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1115" />
+  <meta name="description" content="NoteGraph — gestionnaire de notes Markdown local-first avec graphe 2D des connexions." />
+  <title>NoteGraph</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <div class="topbar-left">
+        <button id="btn-open-folder" class="btn btn-primary">📁 Ouvrir un dossier</button>
+        <span id="folder-name" class="folder-name"></span>
+      </div>
+      <div class="topbar-center">
+        <span id="save-status" class="save-status" data-state="idle">Prêt</span>
+      </div>
+      <div class="topbar-right">
+        <button id="btn-new-note" class="btn" disabled>+ Nouvelle note</button>
+      </div>
+    </header>
+
+    <main id="split-view">
+      <section id="editor-pane">
+        <div class="editor-toolbar">
+          <input id="note-title" class="note-title" type="text" placeholder="Sélectionnez une note…" disabled />
+        </div>
+        <div class="editor-wrap">
+          <textarea id="editor" spellcheck="false" placeholder="Ouvrez un dossier puis sélectionnez ou créez une note Markdown…" disabled></textarea>
+          <ul id="autocomplete" class="autocomplete hidden"></ul>
+        </div>
+      </section>
+
+      <div id="resizer" class="resizer"></div>
+
+      <section id="graph-pane">
+        <div class="graph-controls">
+          <button id="btn-reset-view" class="btn btn-sm">⟳ Réinitialiser la vue</button>
+          <label class="slider-label">
+            Répulsion
+            <input id="range-repulsion" type="range" min="200" max="4000" step="50" value="1200" />
+          </label>
+          <label class="slider-label">
+            Attraction
+            <input id="range-attraction" type="range" min="1" max="100" step="1" value="20" />
+          </label>
+          <span id="graph-stats" class="graph-stats"></span>
+        </div>
+        <canvas id="graph-canvas"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
